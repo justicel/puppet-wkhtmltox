@@ -42,7 +42,7 @@
 # Copyright 2014 Justice London, unless otherwise noted.
 #
 class wkhtmltox (
-  $ensure          = true,
+  $ensure          = present, 
   $version         = '0.12.1',
   $arch            = $::architecture,
   $osver           = $::wkhtmltox::params::osver,
