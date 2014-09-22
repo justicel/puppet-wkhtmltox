@@ -1,6 +1,10 @@
 #Class parameters for wkhtmltox
 class wkhtmltox::params {
 
+  #Default parameters
+  $version = '0.12.1'
+  $arch    = $::architecture
+
   #A bit hacky but the packaged versions of wkhtmltox are sparse
   case $::osfamily {
     'Debian': {

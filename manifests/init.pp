@@ -43,13 +43,13 @@
 #
 class wkhtmltox (
   $ensure          = present, 
-  $version         = '0.12.1',
-  $arch            = $::architecture,
+  $version         = $::wkhtmltox::params::version,
+  $arch            = $::wkhtmltox::params::arch,
   $osver           = $::wkhtmltox::params::osver,
   $packagetype     = $::wkhtmltox::params::packagetype,
   $provider        = $::wkhtmltox::params::provider,
   $download_url    = "http://iweb.dl.sourceforge.net/project/wkhtmltopdf/${version}/${wkhtml_filename}",
-  $wkhtml_filename = "wkhtmltox-${version}_linux-${osver}-${arch}",
+  $wkhtml_filename = "wkhtmltox-${version}_linux-${osver}-${arch}.${packagetype}",
   $use_downloader  = true,
 ) inherits ::wkhtmltox::params {
   include wget
