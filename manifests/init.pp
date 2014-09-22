@@ -42,17 +42,26 @@
 # Copyright 2014 Justice London, unless otherwise noted.
 #
 class wkhtmltox (
-  $ensure          = present, 
+  $ensure          = present,
   $version         = $::wkhtmltox::params::version,
   $arch            = $::wkhtmltox::params::arch,
   $osver           = $::wkhtmltox::params::osver,
   $packagetype     = $::wkhtmltox::params::packagetype,
   $provider        = $::wkhtmltox::params::provider,
-  $download_url    = "http://iweb.dl.sourceforge.net/project/wkhtmltopdf/${version}/${wkhtml_filename}",
-  $wkhtml_filename = "wkhtmltox-${version}_linux-${osver}-${arch}.${packagetype}",
+  $required_pkgs   = $::wkhtmltox::params::required_pkgs,
+  $download_url    = "http://iweb.dl.sourceforge.net/project/wkhtmltopdf",
+  $wkhtml_filename = undef,
   $use_downloader  = true,
 ) inherits ::wkhtmltox::params {
   include wget
+
+  if $wkhtml_filename {
+    $download_location = "${download_url}/${wkhtml_filename}"
+  }
+  else {
+    $filename = "wkhtmltox-${version}_linux-${osver}-${arch}.${packagetype}"
+    $download_location = "${download_url}/${version}/${filename}"
+  }
 
   #Variable validations
   validate_re($ensure, '^present$|^absent$')
@@ -61,21 +70,27 @@ class wkhtmltox (
   validate_string($osver)
   validate_re($packagetype, '^deb$|^rpm$')
   validate_re($provider, '^dpkg$|^rpm$')
+  validate_array($required_pkgs)
   validate_string($download_url)
-  validate_string($wkhtml_filename)
   validate_bool($use_downloader)
+
+  #Package requirements for wkhtmltox
+  ensure_packages($required_pkgs, {
+    ensure => $ensure,
+    before => Package['wkhtmltox'],
+  } )
 
   if $use_downloader {
     #Download wkhtmltox package
     wget::fetch { 'wkhtml_package':
-      source      => $download_url,
-      destination => "/tmp/${wkhtml_filename}",
-      verbose     => false,
+      source      => $download_location,
+      destination => "/tmp/${filename}",
+      verbose     => true,
     }
 
     package { 'wkhtmltox':
       ensure   => $ensure,
-      source   => "/tmp/${wkhtml_filename}",
+      source   => "/tmp/${filename}",
       provider => $provider,
       require  => Wget::Fetch['wkhtml_package'],
     }
