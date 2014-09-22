@@ -1,12 +1,21 @@
 {
   "name": "jlondon-wkhtmltox",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Justice London",
   "summary": "Puppet module to install wkhtmltox/wkhtmltopdf",
   "license": "Apache 2.0",
   "source": "https://github.com/justicel/puppet-wkhtmltox.git",
   "project_page": "https://github.com/justicel/puppet-wkhtmltox",
   "issues_url": "https://github.com/justicel/puppet-wkhtmltox/issues",
+  "tags": [
+    "wkhtmltox",
+    "wkhtmltopdf",
+    "wkhtmltoimage",
+    "pdf",
+    "centos",
+    "debian",
+    "ubuntu"
+  ],
   "dependencies": [
     {
       "name": "puppetlabs-stdlib",
