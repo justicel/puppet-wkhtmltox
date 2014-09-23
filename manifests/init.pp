@@ -49,7 +49,7 @@ class wkhtmltox (
   $packagetype     = $::wkhtmltox::params::packagetype,
   $provider        = $::wkhtmltox::params::provider,
   $required_pkgs   = $::wkhtmltox::params::required_pkgs,
-  $download_url    = "http://iweb.dl.sourceforge.net/project/wkhtmltopdf",
+  $download_url    = 'http://iweb.dl.sourceforge.net/project/wkhtmltopdf',
   $wkhtml_filename = undef,
   $use_downloader  = true,
 ) inherits ::wkhtmltox::params {
@@ -88,18 +88,18 @@ class wkhtmltox (
       verbose     => true,
     }
 
-    package { 'wkhtmltox':
-      ensure   => $ensure,
-      source   => "/tmp/${filename}",
+    ensure_packages('wkhtmltox', {
+      ensure => $ensure,
+      source => "/tmp/${filename}",
       provider => $provider,
       require  => Wget::Fetch['wkhtml_package'],
-    }
+    } )
   }
   else {
     #Just install the plain package, such as from a repo.
-    package { 'wkhtmltox':
+    ensure_packages('wkhtmltox' {
       ensure => $ensure,
-    }
+    } )
   }
 
 }
