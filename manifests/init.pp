@@ -59,7 +59,7 @@ class wkhtmltox (
     $download_location = "${download_url}/${wkhtml_filename}"
   }
   else {
-    $filename = "wkhtmltox-${version}_linux-${osver}-${arch}.${packagetype}"
+    $filename          = "wkhtmltox-${version}_linux-${osver}-${arch}.${packagetype}"
     $download_location = "${download_url}/${version}/${filename}"
   }
 
@@ -89,15 +89,15 @@ class wkhtmltox (
     }
 
     ensure_packages('wkhtmltox', {
-      ensure => $ensure,
-      source => "/tmp/${filename}",
+      ensure   => $ensure,
+      source   => "/tmp/${filename}",
       provider => $provider,
       require  => Wget::Fetch['wkhtml_package'],
     } )
   }
   else {
     #Just install the plain package, such as from a repo.
-    ensure_packages('wkhtmltox' {
+    ensure_packages('wkhtmltox', {
       ensure => $ensure,
     } )
   }
