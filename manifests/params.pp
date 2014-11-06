@@ -15,7 +15,8 @@ class wkhtmltox::params {
         'libqt4-network',
         'fontconfig',
         'libjpeg8',
-        'libxrender1'
+        'libxrender1',
+        'libxext6'
       ]
     }
     'RedHat': {
