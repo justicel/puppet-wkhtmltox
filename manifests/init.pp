@@ -56,6 +56,7 @@ class wkhtmltox (
   include wget
 
   if $wkhtml_filename {
+    $filename          = $wkhtml_filename
     $download_location = "${download_url}/${wkhtml_filename}"
   }
   else {
