@@ -2,7 +2,7 @@
 class wkhtmltox::params {
 
   #Default parameters
-  $version = '0.12.1'
+  $version = '0.12.2'
   $arch    = $::architecture
 
   #A bit hacky but the packaged versions of wkhtmltox are sparse
