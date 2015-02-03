@@ -16,7 +16,9 @@ class wkhtmltox::params {
         'fontconfig',
         'libjpeg8',
         'libxrender1',
-        'libxext6'
+        'libxext6',
+        'xfonts-base',
+        'xfonts-75dpi'
       ]
     }
     'RedHat': {
