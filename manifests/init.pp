@@ -50,7 +50,7 @@ class wkhtmltox (
   $packagetype     = $::wkhtmltox::params::packagetype,
   $provider        = $::wkhtmltox::params::provider,
   $required_pkgs   = $::wkhtmltox::params::required_pkgs,
-  $download_url    = 'http://iweb.dl.sourceforge.net/project/wkhtmltopdf',
+  $download_url    = 'http://download.gna.org/wkhtmltopdf',
   $wkhtml_filename = undef,
   $use_downloader  = true,
 ) inherits ::wkhtmltox::params {
