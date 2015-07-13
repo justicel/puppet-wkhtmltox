@@ -43,6 +43,7 @@
 #
 class wkhtmltox (
   $ensure          = present,
+  $version_major   = $::wkhtmltox::params::majversion,
   $version         = $::wkhtmltox::params::version,
   $arch            = $::wkhtmltox::params::arch,
   $osver           = $::wkhtmltox::params::osver,
@@ -61,7 +62,7 @@ class wkhtmltox (
   }
   else {
     $filename          = "wkhtmltox-${version}_linux-${osver}-${arch}.${packagetype}"
-    $download_location = "${download_url}/${version}/${filename}"
+    $download_location = "${download_url}/${version_major}/${version}/${filename}"
   }
 
   #Variable validations
