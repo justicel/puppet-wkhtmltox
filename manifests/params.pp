@@ -31,7 +31,8 @@ class wkhtmltox::params {
         'libjpeg-turbo',
         'fontconfig',
         'qt',
-        'libXrender'
+        'libXrender',
+        'xorg-x11-fonts-75dpi'
       ]
     }
     default: {
