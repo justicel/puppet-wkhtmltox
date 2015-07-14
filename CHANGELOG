@@ -2,6 +2,7 @@
 
 Bugfixes:
 - Fix dependency issue with centOS packages
+- Added support for x86_64 not just amd64
 
 2016-07-13 - Version 1.0.7
 

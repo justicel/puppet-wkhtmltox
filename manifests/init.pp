@@ -56,19 +56,25 @@ class wkhtmltox (
 ) inherits ::wkhtmltox::params {
   include wget
 
+  #Move x86_64 to amd64
+  $true_arch = $arch ? {
+    'x86_64' => 'amd64',
+    default  => $arch
+  }
+
   if $wkhtml_filename {
     $filename          = $wkhtml_filename
     $download_location = "${download_url}/${wkhtml_filename}"
   }
   else {
-    $filename          = "wkhtmltox-${version}_linux-${osver}-${arch}.${packagetype}"
+    $filename          = "wkhtmltox-${version}_linux-${osver}-${true_arch}.${packagetype}"
     $download_location = "${download_url}/${version_major}/${version}/${filename}"
   }
 
   #Variable validations
   validate_re($ensure, '^present$|^absent$')
   validate_string($version)
-  validate_re($arch, '^i386$|^amd64$')
+  validate_re($arch, '^i386$|^amd64|^x86_64$')
   validate_string($osver)
   validate_re($packagetype, '^deb$|^rpm$')
   validate_re($provider, '^dpkg$|^rpm$')
