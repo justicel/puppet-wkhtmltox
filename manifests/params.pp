@@ -23,8 +23,7 @@ class wkhtmltox::params {
       ]
     }
     'RedHat': {
-      $os_major_ver  = inline_template("<%= operatingsystemrelease.split('.')[0] %>")
-      $osver         = "centos${os_major_ver}"
+      $osver         = "centos${::operatingsystemmajrelease}"
       $packagetype   = 'rpm'
       $provider      = 'rpm'
       $required_pkgs = [
@@ -32,7 +31,9 @@ class wkhtmltox::params {
         'fontconfig',
         'qt',
         'libXrender',
-        'xorg-x11-fonts-75dpi'
+        'xorg-x11-fonts-75dpi',
+        'libXext',
+        'xorg-x11-fonts-Type1'
       ]
     }
     default: {
