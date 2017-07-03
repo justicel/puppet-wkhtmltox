@@ -33,7 +33,8 @@ class wkhtmltox::params {
         'libXrender',
         'xorg-x11-fonts-75dpi',
         'libXext',
-        'xorg-x11-fonts-Type1'
+        'xorg-x11-fonts-Type1',
+        'libpng'
       ]
     }
     default: {
