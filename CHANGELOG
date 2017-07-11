@@ -1,3 +1,7 @@
+2017-07-11 - Version 1.1.1
+
+- Fix to add libpng dependency to module
+
 2017-05-29 - Version 1.1.0
 
 - Merge to support newer puppet versions with os definition built-in to facter
