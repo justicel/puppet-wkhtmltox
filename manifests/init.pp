@@ -50,7 +50,7 @@ class wkhtmltox (
   $packagetype     = $::wkhtmltox::params::packagetype,
   $provider        = $::wkhtmltox::params::provider,
   $required_pkgs   = $::wkhtmltox::params::required_pkgs,
-  $download_url    = 'https://downloads.wkhtmltopdf.org',
+  $download_url    = 'https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download',
   $wkhtml_filename = undef,
   $use_downloader  = true,
 ) inherits ::wkhtmltox::params {
@@ -68,7 +68,7 @@ class wkhtmltox (
   }
   else {
     $filename          = "wkhtmltox-${version}_linux-${osver}-${true_arch}.${packagetype}"
-    $download_location = "${download_url}/${version_major}/${version}/${filename}"
+    $download_location = "${download_url}/${version}/${filename}"
   }
 
   #Variable validations
